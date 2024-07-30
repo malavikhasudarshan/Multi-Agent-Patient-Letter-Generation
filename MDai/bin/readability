@@ -1,0 +1,3 @@
+#!/Users/malavikha/Desktop/summer/md.ai/SIIM2024/alfworld_runs.venv/bin/python3.12
+import readability
+readability.main()
