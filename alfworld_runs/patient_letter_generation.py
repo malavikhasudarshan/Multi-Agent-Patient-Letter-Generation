@@ -3,6 +3,7 @@ import os
 import json
 import requests
 from typing import List, Tuple
+#import alfworld
 from utils import Model
 import readability
 import simple_icd_10 as icd
@@ -12,7 +13,7 @@ import importlib
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import alfworld
-#import alfworld_runs
+import alfworld_runs
 import alfworld.alfworld.agents.environment
 from alfworld_runs import *
 
@@ -304,9 +305,9 @@ def post_communication_resource(communication: Communication):
     return response
 
 ##test radiology report
-radiology_report = get_FHIR_DiagnosticReport_Resource()
-'''
-radiology_report = 
+#radiology_report = get_FHIR_DiagnosticReport_Resource()
+
+radiology_report = '''
 History: [Patient presents with pelvic pain and irregular menstrual cycles.]
 
 Last menstrual period: [Patient reports last menstrual period was 3 weeks ago.]
@@ -346,6 +347,8 @@ Impression:
 '''
 
 print("ORIGINAL RAD REPORT", radiology_report)
+readability_res = readability.getmeasures(radiology_report, lang='en')
+print("READABILITY OF MEDICAL REPORT:", readability_res['readability grades']['Kincaid'])
 
 #generate final report
 (final_report, icd10codes) = generate_patient_friendly_report(radiology_report)
