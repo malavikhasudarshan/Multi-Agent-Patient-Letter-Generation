@@ -4,8 +4,10 @@ The application of Large Language Models (LLMs) in healthcare is expanding rapid
 
 ### Running the Script
 
-From the main *Multi-Agent-Patient-Letter-Generation* directory, navigate to the *alfworld_runs* folder where the script is located. Then, run the *patient-letter-generation.py* file by using the following command:
+From the main `Multi-Agent-Patient-Letter-Generation` directory, navigate to the `alfworld_runs` folder where the script is located. Then, run the `patient-letter-generation.py` file by using the following command:
 
-[python alfworld_runs/patient-letter-generation.py]
+```sh
+python alfworld_runs/patient-letter-generation.py]
+```
 
-This command will start the multi-agent pipeline and generate the patient-friendly reports based on the given inputs. Remember to replace the OpenAI [API-KEY] value and the sample medical report with your own parameters.
+This command will start the multi-agent pipeline and generate the patient-friendly reports based on the given inputs. Remember to replace the OpenAI __[API-KEY]__ value and the sample medical report with your own parameters.
