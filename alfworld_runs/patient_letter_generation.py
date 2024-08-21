@@ -3,7 +3,6 @@ import os
 import json
 import requests
 from typing import List, Tuple
-#import alfworld
 from utils import Model
 import readability
 import simple_icd_10 as icd
@@ -17,7 +16,6 @@ import alfworld_runs
 import alfworld.alfworld.agents.environment
 from alfworld_runs import *
 
-#import PREFIXES
 from importlib import reload
 from typing import Dict, List, Any
 from fhir.resources.communication import Communication
@@ -63,7 +61,7 @@ with open(os.path.join(FOLDER, PROMPT_FILE), 'r') as f:
     d = json.load(f)
 
 #URL and headers for the md.ai endpoint
-MD_AI_URL = 'https://staging.md.ai/api/openai/chat/completions'
+MD_AI_URL = 'https://chat.md.ai/api/openai/chat/completions'
 MD_AI_HEADERS = {
     'Content-Type': 'application/json',
     'x-access-token': '{TOKEN}' #alter token to personal token
@@ -259,6 +257,7 @@ def get_original_icd10_codes(radiology_report: str):
                 "temperature": 0 #want to keep these responses consistent and predictable. used for comparison
             }
     icd_10_original = requests.post(MD_AI_URL, json=original_icd10_body, headers=MD_AI_HEADERS).json()
+    print("DEBUG:", icd_10_original)
     icd_10_original = icd_10_original["response"]["choices"][0]["message"]["content"]
     icd_10_original = eval(icd_10_original) #llm_icd_codes = {"1.2": 'PE', "1.3" : "XYZ"}
     return icd_10_original
