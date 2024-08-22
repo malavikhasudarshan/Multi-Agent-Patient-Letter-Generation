@@ -257,7 +257,6 @@ def get_original_icd10_codes(radiology_report: str):
                 "temperature": 0 #want to keep these responses consistent and predictable. used for comparison
             }
     icd_10_original = requests.post(MD_AI_URL, json=original_icd10_body, headers=MD_AI_HEADERS).json()
-    print("DEBUG:", icd_10_original)
     icd_10_original = icd_10_original["response"]["choices"][0]["message"]["content"]
     icd_10_original = eval(icd_10_original) #llm_icd_codes = {"1.2": 'PE', "1.3" : "XYZ"}
     return icd_10_original
